@@ -24,7 +24,7 @@ const Loadable = (Component: ElementType) => (props: any) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { isAuthenticated } = useAuth();
 
-  const isDashboard = pathname.includes('/dashboard') && isAuthenticated;
+  const isDashboard = pathname.includes('/dashboard') //&& isAuthenticated;
 
   return (
     <Suspense fallback={<LoadingScreen isDashboard={isDashboard} />}>
@@ -66,12 +66,15 @@ export default function Router() {
     {
       path: 'dashboard',
       element: (
-        <AuthGuard>
-          <DashboardLayout />
-        </AuthGuard>
+        // <AuthGuard>
+        //   <DashboardLayout />
+        // </AuthGuard>
+
+            <DashboardLayout />
+
       ),
       children: [
-        { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
+       // { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
         { path: 'app', element: <GeneralApp /> },
         { path: 'ecommerce', element: <GeneralEcommerce /> },
         { path: 'analytics', element: <GeneralAnalytics /> },

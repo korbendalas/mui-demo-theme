@@ -123,19 +123,19 @@ function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   const login = async (email: string, password: string) => {
-    const response = await axios.post('/api/account/login', {
-      email,
-      password,
-    });
-    const { accessToken, user } = response.data;
+    // const response = await axios.post('/api/account/login', {
+    //   email,
+    //   password,
+    // });
+    // const { accessToken, user } = response.data;
 
-    setSession(accessToken);
+    setSession("accessToken");
 
     dispatch({
       type: Types.Login,
-      payload: {
-        user,
-      },
+      payload: { user:{email:"dabe@gmail.com",firstName:"dabe",lastName:"dabe",role:"admin"} },
+        //user,
+
     });
   };
 
